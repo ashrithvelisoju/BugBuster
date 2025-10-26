@@ -75,6 +75,67 @@ BugBuster won **Third prize** at **Hacksavvy-25**, a prestigious 24-hour nationa
 - **Sensitive Data Exposure**: Hardcoded credentials, insecure data storage, information leakage
 - **Memory Safety**: Buffer overflows, use-after-free, memory leaks (C/C++)
 - **Code Quality Issues**: Code smells, complexity metrics, maintainability concerns
+🧮 Algorithms Used
+
+### 1. **Abstract Syntax Tree (AST) Parsing**
+   - Converts source code into structured tree representations
+   - Enables deep semantic analysis of code structure
+   - Facilitates pattern matching and code flow analysis
+
+### 2. **Taint Analysis**
+   - Tracks untrusted data flow through the application
+   - Identifies potential injection vulnerabilities (SQL, XSS, etc.)
+   - Detects data sanitization issues
+
+### 3. **Pattern Recognition**
+   - Machine learning-based detection of known vulnerability patterns
+@@ -37,136 +57,3 @@
+   - Assigns severity scores to identified issues
+
+### 5. **Unified Representation**
+   - Creates language-agnostic intermediate representations
+   - Enables cross-language vulnerability analysis
+   - Facilitates comparison of security patterns across different languages
+
+## 🔍 Types of Vulnerabilities Detected
+
+BugBuster identifies and analyzes a comprehensive range of security vulnerabilities across multiple categories:
+
+### Interpreter Vulnerabilities
+Vulnerabilities that arise when code is executed by various interpreters without proper validation or sanitization:
+- **SQL Injection**: Malicious SQL code executed by database interpreters, allowing unauthorized database access or manipulation
+- **Cross-Site Scripting (XSS)**: Malicious scripts executed by browser JavaScript interpreters, enabling session hijacking or data theft
+- **Shell Injection**: Dangerous commands executed by operating system shell interpreters, potentially leading to system compromise
+- **Command Injection**: Arbitrary commands executed through system calls or shell interfaces
+- **Template Injection**: Code executed through template engines, potentially exposing sensitive data or server control
+
+### Cross-Language Security Gaps
+Security issues that emerge at the boundaries between different programming languages or systems:
+- **Inconsistent Sanitization**: Different languages applying varying levels of input validation, creating exploitable gaps
+- **Encoding Mismatches**: Character encoding differences between languages leading to bypass vulnerabilities
+- **API Security Flaws**: Insecure data handling when transitioning between APIs written in different languages
+- **Unsafe Boundary Transitions**: Data type conversions or serialization/deserialization flaws at language boundaries
+- **Escaping Inconsistencies**: Different escaping mechanisms across languages allowing injection attacks
+
+### Input Validation Inconsistencies
+Flaws arising from inadequate or inconsistent validation of user inputs:
+- **Validation Bypasses**: Different validation rules in different application layers allowing malicious input to pass through
+- **Type Confusion**: Exploiting differences in how languages handle data types
+- **Business Logic Flaws**: Inconsistent validation allowing unauthorized operations
+- **Path Traversal**: Inadequate validation of file paths enabling unauthorized file access
+- **LDAP/XML/NoSQL Injection**: Language-specific injection vulnerabilities due to inconsistent input handling
+
+### Detection Methods
+BugBuster employs multiple detection methodologies to ensure comprehensive coverage:
+- **Static Application Security Testing (SAST)**: Analyzing source code without execution to identify vulnerabilities
+- **Dynamic Application Security Testing (DAST)**: Testing running applications to discover runtime vulnerabilities
+- **Fuzz Testing**: Automated input of malformed or unexpected data to discover edge cases
+- **API Security Testing**: Specialized analysis of API endpoints and data flows
+- **Dependency Scanning**: Identifying known vulnerabilities in third-party libraries and dependencies
+- **Code Audit**: Manual and automated review of code quality and security practices
+- **Container Scanning**: Analysis of containerized applications for security misconfigurations
+- **Monitoring Methods**: Runtime detection and alerting of suspicious activities and patterns
+
 
 ## 🛠️ Technology Stack
 
