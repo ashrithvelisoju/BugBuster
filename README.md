@@ -1,13 +1,10 @@
 # 🐛 BugBuster
-
 > A sophisticated code vulnerability detection and analysis platform powered by advanced static analysis algorithms.
 
 ## 📋 Project Overview
-
 BugBuster is an intelligent code analysis tool designed to identify security vulnerabilities, code smells, and potential bugs across multiple programming languages. It leverages advanced static analysis techniques including Abstract Syntax Tree (AST) parsing, taint analysis, and pattern recognition to provide comprehensive code quality insights. The platform features a modern web interface built with React and a powerful Python-based backend that performs deep code inspection.
 
 ## ✨ Features
-
 - **Multi-Language Support**: Analyze code written in various programming languages
 - **Real-Time Vulnerability Detection**: Identify security flaws and vulnerabilities instantly
 - **Advanced Code Analysis**: Deep inspection using multiple analysis techniques
@@ -41,74 +38,90 @@ BugBuster is an intelligent code analysis tool designed to identify security vul
 
 ### 5. **Unified Representation**
    - Creates language-agnostic intermediate representations
-   - Enables consistent analysis across different programming languages
-   - Facilitates cross-language vulnerability detection
+   - Enables cross-language vulnerability analysis
+   - Facilitates comparison of security patterns across different languages
 
-### 6. **Cross-Language Detection**
-   - Analyzes polyglot applications holistically
-   - Detects vulnerabilities that span multiple languages
-   - Identifies integration security issues
+## 🔍 Types of Vulnerabilities Detected
 
-## 🛠️ Technology Stack
+BugBuster identifies and analyzes a comprehensive range of security vulnerabilities across multiple categories:
 
-### Backend
-- **Python 3.x**: Core backend language
-- **Flask**: Web framework for RESTful API
-- **AST Module**: Python's built-in abstract syntax tree parser
-- **Custom Analysis Engines**: Proprietary vulnerability detection algorithms
+### Interpreter Vulnerabilities
+Vulnerabilities that arise when code is executed by various interpreters without proper validation or sanitization:
+- **SQL Injection**: Malicious SQL code executed by database interpreters, allowing unauthorized database access or manipulation
+- **Cross-Site Scripting (XSS)**: Malicious scripts executed by browser JavaScript interpreters, enabling session hijacking or data theft
+- **Shell Injection**: Dangerous commands executed by operating system shell interpreters, potentially leading to system compromise
+- **Command Injection**: Arbitrary commands executed through system calls or shell interfaces
+- **Template Injection**: Code executed through template engines, potentially exposing sensitive data or server control
 
-### Frontend
-- **React.js**: Modern UI library for building interactive interfaces
-- **JavaScript (ES6+)**: Frontend programming language
-- **HTML5 & CSS3**: Structure and styling
+### Cross-Language Security Gaps
+Security issues that emerge at the boundaries between different programming languages or systems:
+- **Inconsistent Sanitization**: Different languages applying varying levels of input validation, creating exploitable gaps
+- **Encoding Mismatches**: Character encoding differences between languages leading to bypass vulnerabilities
+- **API Security Flaws**: Insecure data handling when transitioning between APIs written in different languages
+- **Unsafe Boundary Transitions**: Data type conversions or serialization/deserialization flaws at language boundaries
+- **Escaping Inconsistencies**: Different escaping mechanisms across languages allowing injection attacks
 
-### Development Tools
-- **Git**: Version control
-- **Yarn**: Package management
-- **Node.js**: JavaScript runtime environment
+### Input Validation Inconsistencies
+Flaws arising from inadequate or inconsistent validation of user inputs:
+- **Validation Bypasses**: Different validation rules in different application layers allowing malicious input to pass through
+- **Type Confusion**: Exploiting differences in how languages handle data types
+- **Business Logic Flaws**: Inconsistent validation allowing unauthorized operations
+- **Path Traversal**: Inadequate validation of file paths enabling unauthorized file access
+- **LDAP/XML/NoSQL Injection**: Language-specific injection vulnerabilities due to inconsistent input handling
 
-## 🔍 How It Works
-
-1. **Code Submission**: Users upload or paste code through the web interface
-2. **Language Detection**: System identifies the programming language(s) used
-3. **AST Generation**: Code is parsed into Abstract Syntax Trees
-4. **Multi-Algorithm Analysis**: Parallel execution of various analysis engines:
-   - Taint analysis for data flow tracking
-   - Pattern recognition for known vulnerabilities
-   - Vulnerability engine for security checks
-5. **Unified Processing**: Results are aggregated through the unified representation layer
-6. **Report Generation**: Comprehensive vulnerability report is compiled
-7. **Result Visualization**: Findings are displayed in the web interface with:
-   - Severity classifications
-   - Line-by-line issue highlighting
-   - Remediation suggestions
+### Detection Methods
+BugBuster employs multiple detection methodologies to ensure comprehensive coverage:
+- **Static Application Security Testing (SAST)**: Analyzing source code without execution to identify vulnerabilities
+- **Dynamic Application Security Testing (DAST)**: Testing running applications to discover runtime vulnerabilities
+- **Fuzz Testing**: Automated input of malformed or unexpected data to discover edge cases
+- **API Security Testing**: Specialized analysis of API endpoints and data flows
+- **Dependency Scanning**: Identifying known vulnerabilities in third-party libraries and dependencies
+- **Code Audit**: Manual and automated review of code quality and security practices
+- **Container Scanning**: Analysis of containerized applications for security misconfigurations
+- **Monitoring Methods**: Runtime detection and alerting of suspicious activities and patterns
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Python 3.8 or higher
-- Node.js 14.x or higher
-- Yarn package manager
+- Node.js 14 or higher
+- npm or yarn package manager
+- Git
 
 ### Installation
 
 #### Backend Setup
 ```bash
-cd backend
+# Clone the repository
+git clone https://github.com/ashrithvelisoju/BugBuster.git
+cd BugBuster
+
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install backend dependencies
 pip install -r requirements.txt
-python server.py
+
+# Start the backend server
+python app.py
 ```
 
 #### Frontend Setup
 ```bash
+# Navigate to frontend directory
 cd frontend
-yarn install
-yarn start
+
+# Install frontend dependencies
+npm install
+
+# Start the frontend development server
+npm start
 ```
 
 ### Configuration
-1. Create a `.env` file in the backend directory
-2. Configure environment variables as needed
+1. Configure your database connection in `config.py`
+2. Set up environment variables as needed
 3. Ensure both frontend and backend are running on their respective ports
 
 ### Usage
