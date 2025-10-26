@@ -75,7 +75,8 @@ BugBuster won **Third prize** at **Hacksavvy-25**, a prestigious 24-hour nationa
 - **Sensitive Data Exposure**: Hardcoded credentials, insecure data storage, information leakage
 - **Memory Safety**: Buffer overflows, use-after-free, memory leaks (C/C++)
 - **Code Quality Issues**: Code smells, complexity metrics, maintainability concerns
-🧮 Algorithms Used
+
+## 🧮 Algorithms Used
 
 ### 1. **Abstract Syntax Tree (AST) Parsing**
    - Converts source code into structured tree representations
