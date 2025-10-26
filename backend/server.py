@@ -13,7 +13,7 @@ import uuid
 from datetime import datetime, timezone, timedelta
 import jwt
 from passlib.hash import bcrypt
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+import google.generativeai as genai
 import asyncio
 import re
 import aiohttp
@@ -281,11 +281,10 @@ async def analyze_code_with_gemini(code: str, language: str) -> List[Dict[str, A
         raise HTTPException(status_code=500, detail="GEMINI_API_KEY not configured")
     
     try:
-        # Initialize Gemini chat
-        chat = LlmChat(
-            api_key=gemini_api_key,
-            session_id=f"scan_{uuid.uuid4()}",
-            system_message="""You are an expert security analyst specialized in detecting code vulnerabilities.
+        # Initialize Gemini
+        genai.configure(api_key=gemini_api_key)
+        model = genai.GenerativeModel('gemini-2.0-pro-exp',
+            system_instruction="""You are an expert security analyst specialized in detecting code vulnerabilities.
             Analyze the provided code and identify security vulnerabilities, bugs, and code quality issues.
             
             For each vulnerability found, provide:
@@ -311,8 +310,7 @@ async def analyze_code_with_gemini(code: str, language: str) -> List[Dict[str, A
             ]
             
             If no vulnerabilities are found, return an empty array: []
-            """
-        ).with_model("gemini", "gemini-2.0-flash")
+            """)
         
         # Create analysis prompt
         prompt = f"""Analyze this {language} code for security vulnerabilities:
@@ -323,13 +321,12 @@ async def analyze_code_with_gemini(code: str, language: str) -> List[Dict[str, A
 
 Return a JSON array of vulnerabilities found."""
         
-        user_message = UserMessage(text=prompt)
-        response = await chat.send_message(user_message)
+        response = await asyncio.to_thread(model.generate_content, prompt)
         
         # Parse JSON response
         import json
         # Extract JSON from response (handle markdown code blocks)
-        response_text = response.strip()
+        response_text = response.text.strip()
         if '```json' in response_text:
             response_text = response_text.split('```json')[1].split('```')[0].strip()
         elif '```' in response_text:
@@ -354,10 +351,9 @@ async def generate_ai_fix(code_snippet: str, vulnerability_description: str, lan
         raise HTTPException(status_code=500, detail="GEMINI_API_KEY not configured")
     
     try:
-        chat = LlmChat(
-            api_key=gemini_api_key,
-            session_id=f"fix_{uuid.uuid4()}",
-            system_message="""You are an expert software engineer specialized in fixing security vulnerabilities.
+        genai.configure(api_key=gemini_api_key)
+        model = genai.GenerativeModel('gemini-2.0-pro-exp',
+            system_instruction="""You are an expert software engineer specialized in fixing security vulnerabilities.
             Given a code snippet with a vulnerability, provide a fixed version of the code.
             
             Your response should be a JSON object with:
@@ -374,8 +370,7 @@ async def generate_ai_fix(code_snippet: str, vulnerability_description: str, lan
                 "Added input validation",
                 "Implemented proper error handling"
               ]
-            }"""
-        ).with_model("gemini", "gemini-2.0-flash")
+            }""")
         
         prompt = f"""Analyze this {language} code from {file_path} and fix the following vulnerability:
 
@@ -388,9 +383,9 @@ Original Code:
 
 Provide a secure, fixed version of this code along with explanations."""
 
-        response = await chat.send_message(UserMessage(text=prompt))
+        response = await asyncio.to_thread(model.generate_content, prompt)
         
-        response_text = response if isinstance(response, str) else str(response)
+        response_text = response.text.strip()
         
         # Extract JSON from response
         if '```json' in response_text:

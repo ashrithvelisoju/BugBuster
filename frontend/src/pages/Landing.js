@@ -12,7 +12,7 @@ export default function Landing() {
     {
       icon: <Shield className="w-8 h-8" />,
       title: "AI-Powered Security",
-      description: "Leverage Gemini 2.0 Flash to detect vulnerabilities with cutting-edge AI technology",
+      description: "Leverage Gemini 2.0 Pro to detect vulnerabilities with cutting-edge AI technology",
       gradient: "from-blue-500 to-cyan-500"
     },
     {
@@ -108,7 +108,7 @@ export default function Landing() {
         <div className="max-w-5xl mx-auto text-center">
           <Badge className="mb-6 bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-1.5">
             <Sparkles className="w-4 h-4 mr-2 inline" />
-            Powered by Gemini 2.0 Flash AI
+            Powered by Gemini 2.0 Pro AI
           </Badge>
           
           <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">

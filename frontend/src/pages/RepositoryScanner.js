@@ -413,7 +413,7 @@ export default function RepositoryScanner({ user }) {
                     <Shield className="w-8 h-8 text-blue-600" />
                     <div>
                       <p className="font-semibold text-gray-900">AI-Powered Analysis</p>
-                      <p className="text-xs text-gray-600">Using Gemini 2.0 Flash</p>
+                      <p className="text-xs text-gray-600">Using Gemini 2.0 Pro</p>
                     </div>
                   </div>
 
