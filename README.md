@@ -6,8 +6,8 @@ BugBuster is an intelligent code analysis tool designed to identify security vul
 
 ## 🏆 Achievements
 
-### First Prize at Hacksavvy-25
-BugBuster won **first prize** at **Hacksavvy-25**, a prestigious 24-hour national-level hackathon organized by Mahatma Gandhi Institute of Technology. This achievement recognizes the project's innovation, technical excellence, and practical impact in the field of software security.
+### Third Prize at Hacksavvy-25
+BugBuster won **Third prize** at **Hacksavvy-25**, a prestigious 24-hour national-level hackathon organized by Mahatma Gandhi Institute of Technology. This achievement recognizes the project's innovation, technical excellence, and practical impact in the field of software security.
 
 ### Why This Project Won
 - **Innovative Cross-Language Vulnerability Detection**: BugBuster stands out by providing unified vulnerability detection across multiple programming languages, addressing a critical gap in existing security tools.
