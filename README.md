@@ -1,4 +1,4 @@
-# 🐛 BugBuster
+# 🐛 BugBuster - Cross Language Code Vulnerability Analyzer
 
 > A sophisticated code vulnerability detection and analysis platform powered by advanced static analysis algorithms.
 
@@ -180,7 +180,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # Start the backend server
-python app.py
+python server.py
 ```
 
 #### Frontend Setup
