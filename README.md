@@ -236,6 +236,11 @@ We welcome contributions to BugBuster! Here's how you can help:
 - GitHub: [@ashrithvelisoju](https://github.com/ashrithvelisoju)
 - Repository: [BugBuster](https://github.com/ashrithvelisoju/BugBuster)
 
+
+**MOHIT CHANDRA GANGULY**
+
+- GitHub: [@MCG11Hub](https://github.com/MCG11Hub)
+
 ---
 
 ## 📄 License
@@ -250,4 +255,4 @@ This project is available for educational and research purposes. Please contact 
 
 ---
 
-**Made with ❤️ by Ashrith Velisoju**
+**Made with by MOHIT CHANDRA GANGULY & ASHRITH VELISOJU**
